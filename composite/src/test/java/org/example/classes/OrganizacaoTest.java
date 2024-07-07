@@ -7,22 +7,22 @@ import static org.junit.jupiter.api.Assertions.*;
 class OrganizacaoTest {
     @Test
     void deveRetornarQuadroDeFuncionarios() {
-        Setor setor1 = new Setor("Vendas");
-        Funcao funcao11 = new Funcao("Vendedor Presencial", 2);
-        setor1.addCargo(funcao11);
+        Setor setorVendas = new Setor("Vendas");
+        Funcao funcaoVendedorPresencial = new Funcao("Vendedor Presencial", 2);
+        setorVendas.addCargo(funcaoVendedorPresencial);
 
-        Setor setor2 = new Setor("TI");
-        Funcao funcao21 = new Funcao("Desenvolvedor", 3);
-        Funcao funcao22 = new Funcao("Analista de Sistemas", 4);
-        setor2.addCargo(funcao21);
-        setor2.addCargo(funcao22);
+        Setor setorTI = new Setor("TI");
+        Funcao funcaoDesenvolvedor = new Funcao("Desenvolvedor", 3);
+        Funcao funcaoAnalistaDeSistemas = new Funcao("Analista de Sistemas", 4);
+        setorTI.addCargo(funcaoDesenvolvedor);
+        setorTI.addCargo(funcaoAnalistaDeSistemas);
 
-        Setor quadroDeFuncionarios = new Setor("Organização");
-        quadroDeFuncionarios.addCargo(setor1);
-        quadroDeFuncionarios.addCargo(setor2);
+        Setor setorOrganizacao = new Setor("Organização");
+        setorOrganizacao.addCargo(setorVendas);
+        setorOrganizacao.addCargo(setorTI);
 
         Organizacao organizacao = new Organizacao();
-        organizacao.setQuadroDeFuncionarios(quadroDeFuncionarios);
+        organizacao.setQuadroDeFuncionarios(setorOrganizacao);
 
         assertEquals("Setor: Organização\n" +
                 "Setor: Vendas\n" +
@@ -42,4 +42,5 @@ class OrganizacaoTest {
         catch (NullPointerException e) {
             assertEquals("Organização sem quadro de funcionários", e.getMessage());
         }
-    }}
+    }
+}
